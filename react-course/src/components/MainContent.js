@@ -1,10 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-function MainContent(){
-    return(
+const MainContent = () => (
         <main>
             <p>Paragraph from MainContent component</p>
         </main>
     )
-}
 export default MainContent

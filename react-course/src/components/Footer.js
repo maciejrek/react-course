@@ -1,11 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-function Footer(){
-    return(
-        <footer>
-            <h3>This is my footer component.</h3>
-        </footer>
-    )
+const styles = {
+    color: "#FF8C00", 
+    backgroundColor: "#FF2D00",
+    fontSize: "24px"
 }
+const Footer = () => (
+        <footer>
+            <h3 style={styles}>This is my footer component.</h3>
+        </footer>
+)
 
 export default Footer

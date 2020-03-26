@@ -1,8 +1,7 @@
-import React from 'react';
+import React from 'react'
+import './Header.css'
 
-function Header(){
-    return(<nav>
-        <h1>Nav from header</h1>
-        </nav>)
-}
+const Header = () => (
+    <header className="navbar">Nav from header</header>
+    )
 export default Header
