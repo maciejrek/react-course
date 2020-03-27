@@ -16,30 +16,35 @@ import products from "./vschoolProducts";
 //   return <div className="products">{productComponents}</div>;
 // }
 
-// class AppWorkshop extends React.Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       isLoggedIn: true
-//     };
-//   }
+class AppWorkshop extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      count: 0
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-//   render() {
-//     return (
-//       <div>
-//         <h1>You are logged {this.state.isLoggedIn? "in": "out"}</h1>
-//       </div>
-//     );
-//   }
-// }
+  handleClick() {
+    this.setState(prevState => ({ count: prevState.count + 1 }));
+  }
+  render() {
+    return (
+      <div>
+        <h1>{this.state.count}</h1>
+        <button onClick={this.handleClick}>Change!</button>
+      </div>
+    );
+  }
+}
 
-const AppWorkshop = ()=>(
-  <div>
-    <img src="https://www.fillmurray.com/200/100"/>
-    <br/>
-    <br/>
-    <button onClick={()=>{console.log("I was clicked")}} onMouseOver={()=>{console.log("I was almost clicked")}}>Click me</button>
-  </div>
-)
+// const AppWorkshop = ()=>(
+//   <div>
+//     <img src="https://www.fillmurray.com/200/100"/>
+//     <br/>
+//     <br/>
+//     <button onClick={()=>{console.log("I was clicked")}} onMouseOver={()=>{console.log("I was almost clicked")}}>Click me</button>
+//   </div>
+// )
 
 export default AppWorkshop;
