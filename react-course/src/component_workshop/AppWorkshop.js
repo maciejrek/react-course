@@ -17,18 +17,19 @@ import products from "./vschoolProducts";
 // }
 
 class AppWorkshop extends React.Component {
-  ownMethodHer() {}
-  render() {
-    const productComponents = products.map(product => (
-      <Product
-        key={product.id}
-        name={product.name}
-        price={product.price}
-        description={product.description}
-      />
-    ));
+  constructor() {
+    super();
+    this.state = {
+      isLoggedIn: true
+    };
+  }
 
-    return <div className="products">{productComponents}</div>;
+  render() {
+    return (
+      <div>
+        <h1>You are logged {this.state.isLoggedIn? "in": "out"}</h1>
+      </div>
+    );
   }
 }
 
