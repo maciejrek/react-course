@@ -4,14 +4,14 @@ import './Joke.css'
 const Joke = (props) =>
 (
     <div className="joke-component">
-            {props.joke.question?
+            {props.question?
             <div>
-            <h1>{props.joke.question}</h1>
-            <h3>{props.joke.response}</h3>
+            <h1>{props.question}</h1>
+            <h3>{props.response}</h3>
             </div>
             :
             <div>
-            <h1>{props.joke.response}</h1>
+            <h1>{props.response}</h1>
             </div>}
     </div>
 )
