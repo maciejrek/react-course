@@ -4,33 +4,29 @@ import React, { Component } from "react";
 // import jokesData from "./jokesData";
 // import Product from "./Product";
 // import products from "./vschoolProducts";
-import Conditional from "./Conditional";
+// import Conditional from "./Conditional";
 
-//Conditional rendering
 class AppWorkshop extends Component {
   constructor() {
     super();
     this.state = {
-      isLoading: true
+      isLoggedIn: false
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        isLoading: false
-      });
-    }, 1500);
+  handleClick() {
+    this.setState(prevState => ({ isLoggedIn: !prevState.isLoggedIn }));
   }
-
   render() {
+    let buttonText = this.state.isLoggedIn ? "Log Out" : "Log In"
+    let displayText = this.state.isLoggedIn ? "Logged In" : "Logged out"
     return (
       <div>
-        {this.state.isLoading?
-        <h1>Loading..</h1>:
-        <Conditional />
-        }
-        
+        <h1>{displayText}</h1>
+        <button onClick={this.handleClick}>
+          <h2>{buttonText}</h2>
+        </button>
       </div>
     );
   }
@@ -38,6 +34,29 @@ class AppWorkshop extends Component {
 
 export default AppWorkshop;
 
+// //Conditional rendering
+// class AppWorkshop extends Component {
+//   constructor() {
+//     super();
+//     this.state = {
+//       isLoading: true
+//     };
+//   }
+
+//   componentDidMount() {
+//     setTimeout(() => {
+//       this.setState({
+//         isLoading: false
+//       });
+//     }, 1500);
+//   }
+
+//   render() {
+//     return (
+//       <div>{this.state.isLoading ? <h1>Loading..</h1> : <Conditional />}</div>
+//     );
+//   }
+// }
 
 //
 // function AppWorkshop() {
