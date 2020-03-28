@@ -10,25 +10,27 @@ class AppWorkshop extends Component {
   constructor() {
     super();
     this.state = {
-      isLoggedIn: false
+      loading: false,
+      character: {}
     };
-    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
-    this.setState(prevState => ({ isLoggedIn: !prevState.isLoggedIn }));
+  componentDidMount() {
+    this.setState({
+      loading: true
+    });
+    fetch("https://swapi.co/api/people/1")
+      .then(response => response.json())
+      .then(data =>
+        this.setState({
+          character: data,
+          loading:false
+        })
+      );
   }
   render() {
-    let buttonText = this.state.isLoggedIn ? "Log Out" : "Log In"
-    let displayText = this.state.isLoggedIn ? "Logged In" : "Logged out"
-    return (
-      <div>
-        <h1>{displayText}</h1>
-        <button onClick={this.handleClick}>
-          <h2>{buttonText}</h2>
-        </button>
-      </div>
-    );
+    const text = this.state.loading?"Loading":this.state.character.name
+    return <div><h1>{text}</h1></div>;
   }
 }
 
@@ -54,6 +56,33 @@ export default AppWorkshop;
 //   render() {
 //     return (
 //       <div>{this.state.isLoading ? <h1>Loading..</h1> : <Conditional />}</div>
+//     );
+//   }
+// }
+
+// //conditional rendering practice
+// class AppWorkshop extends Component {
+//   constructor() {
+//     super();
+//     this.state = {
+//       isLoggedIn: false
+//     };
+//     this.handleClick = this.handleClick.bind(this);
+//   }
+
+//   handleClick() {
+//     this.setState(prevState => ({ isLoggedIn: !prevState.isLoggedIn }));
+//   }
+//   render() {
+//     let buttonText = this.state.isLoggedIn ? "Log Out" : "Log In"
+//     let displayText = this.state.isLoggedIn ? "Logged In" : "Logged out"
+//     return (
+//       <div>
+//         <h1>{displayText}</h1>
+//         <button onClick={this.handleClick}>
+//           <h2>{buttonText}</h2>
+//         </button>
+//       </div>
 //     );
 //   }
 // }
