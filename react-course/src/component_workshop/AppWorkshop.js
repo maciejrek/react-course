@@ -10,31 +10,75 @@ class AppWorkshop extends Component {
   constructor() {
     super();
     this.state = {
-      loading: false,
-      character: {}
+      firstName: "",
+      lastName: ""
     };
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(event) {
+    const {name,value} = event.target
+    this.setState({
+      [name]: value // NEED TO BE IN [] due to some js shiet
+    });
   }
 
-  componentDidMount() {
-    this.setState({
-      loading: true
-    });
-    fetch("https://swapi.co/api/people/1")
-      .then(response => response.json())
-      .then(data =>
-        this.setState({
-          character: data,
-          loading:false
-        })
-      );
-  }
   render() {
-    const text = this.state.loading?"Loading":this.state.character.name
-    return <div><h1>{text}</h1></div>;
+    return (
+      <form>
+        <input
+          type="text"
+          value={this.state.firstName}
+          name="firstName"
+          placeholder="first name"
+          onChange={this.handleChange}
+        />
+        <br />
+        <input
+          type="text"
+          value={this.state.lastName}
+          name="lastName"
+          placeholder="last name"
+          onChange={this.handleChange}
+        />
+
+        <h1>
+          {this.state.firstName} {this.state.lastName}
+        </h1>
+      </form>
+    );
   }
 }
 
 export default AppWorkshop;
+
+// //Api fetching
+// class AppWorkshop extends Component {
+//   constructor() {
+//     super();
+//     this.state = {
+//       loading: false,
+//       character: {}
+//     };
+//   }
+
+//   componentDidMount() {
+//     this.setState({
+//       loading: true
+//     });
+//     fetch("https://swapi.co/api/people/1")
+//       .then(response => response.json())
+//       .then(data =>
+//         this.setState({
+//           character: data,
+//           loading:false
+//         })
+//       );
+//   }
+//   render() {
+//     const text = this.state.loading?"Loading":this.state.character.name
+//     return <div><h1>{text}</h1></div>;
+//   }
+// }
 
 // //Conditional rendering
 // class AppWorkshop extends Component {
